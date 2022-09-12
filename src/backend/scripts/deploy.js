@@ -10,7 +10,7 @@ async function main() {
   //   const myContractFactory = await ethers.getContractFactory(
   //     "MyContract"
   //   );
-  //   const myContract = await MyContractFactory.deploy(
+  //   const myContract = await myContractFactory.deploy(
   //     arg1,
   //     arg2,
   //     { value: someValue }
@@ -24,7 +24,7 @@ async function main() {
 
 function saveFrontendFiles(contract, name) {
   const fs = require("fs");
-  const contractsDir = __dirname + "/../../frontend/contractsData";
+  const contractsDir = __dirname + "/../../frontend/contracts";
 
   if (!fs.existsSync(contractsDir)) {
     fs.mkdirSync(contractsDir);
