@@ -1,3 +1,4 @@
+require("dotenv").config();
 require("@nomiclabs/hardhat-waffle");
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -13,6 +14,9 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
+const ETHEREUM_NODE_API_KEY = process.env.ETHEREUM_NODE_API_KEY;
+const WALLET_PRIVATE_KEY = process.env.WALLET_PRIVATE_KEY;
+
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
@@ -23,5 +27,11 @@ module.exports = {
     sources: "./src/backend/contracts",
     cache: "./src/backend/cache",
     tests: "./src/backend/test",
+  },
+  networks: {
+    goerli: {
+      url: `https://goerli.infura.io/v3/${ETHEREUM_NODE_API_KEY}`,
+      accounts: [WALLET_PRIVATE_KEY],
+    },
   },
 };
